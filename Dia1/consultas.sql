@@ -135,7 +135,16 @@ select nombre , precio *100 as centimo from producto;
 -- 34. Devuelve una lista con el nombre de todos los productos que contienen la  cadena Portátil en el nombre.
 
  select nombre from producto where nombre Ilike '%Portátil%';
- 
+
+-- 35. Devuelve una lista con el nombre de todos los productos que contienen la
+--cadena Monitor en el nombre y tienen un precio inferior a 215 €.
+select nombre from producto where nombre Ilike '%Monitor%'  and precio<215;
+
+--36. Lista el nombre y el precio de todos los productos que tengan un precio
+--mayor o igual a 180€. Ordene el resultado en primer lugar por el precio (en
+--orden descendente) y en segundo lugar por el nombre (en orden
+--ascendente).
+ select  precio, nombre from producto where precio>=180 order by 1 asc,2 desc ;
 
 -- Consultas multitabla (Composición interna)
 
