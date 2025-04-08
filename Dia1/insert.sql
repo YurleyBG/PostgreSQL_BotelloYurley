@@ -1,3 +1,4 @@
+
 insert into fabricante(nombre) values
 
 ('Asus'),
