@@ -227,3 +227,6 @@ inner join fabricante f on p.codigo_fabricante=f.codigo where p.precio>=180 orde
 select f.codigo, f.nombre as nombre_fabricante  from producto p 
 inner join fabricante f on p.codigo_fabricante=f.codigo ;
 
+
+
+
