@@ -38,7 +38,7 @@ select nombre, ROUND(precio)  from producto;
 
 -- 10. Lista los nombres y los precios de todos los productos de la tabla producto,  truncando el valor del precio para mostrarlo sin ninguna cifra decimal. 
 
-select nombre, ROUND(precio)  from producto;
+select nombre, trunc(precio)  from producto;
 
 -- 11. Lista el identificador de los fabricantes que tienen productos en la  tabla producto. 
 
