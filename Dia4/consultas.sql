@@ -93,3 +93,36 @@ select * from users inner join orders  on  users.id = orders.user_id ;
 select * from users right join orders  on  users.id = orders.user_id 
 left join order_details od on orders.id=od.order_id
 left join products p on p.id=od.product_id ;
+
+--vista
+create view order_detail_view as 
+select * from users right join orders  on  users.id = orders.user_id 
+left join order_details od on orders.id=od.order_id
+left join products p on p.id=od.product_id ;
+
+-- procedimientos de almacenado
+
+CREATE VIEW order_detail_view as
+SELECT users.id as user_id, users.first_name, orders.id as order_id, orders.orderdate, od.product_id, od.quantity, od.price, p.name
+FROM users
+RIGHT JOIN orders ON users.id = orders.user_id
+LEFT JOIN order_details od ON orders.id = od.order_id
+LEFT JOIN products p ON od.product_id = p.id;
+
+CREATE OR REPLACE PROCEDURE total_amount(p_id_user VARCHAR(20))
+LANGUAGE plpgsql
+AS $$
+DECLARE
+	total NUMERIC;
+BEGIN
+
+	SELECT SUM(quantity::numeric * price::numeric)
+	INTO total
+	FROM order_detail_view
+	WHERE user_id = p_id_user;
+
+	RAISE NOTICE 'El total de $ gastado % es %',p_id_user, total;
+END;
+$$;
+
+CALL total_amount('00005');
